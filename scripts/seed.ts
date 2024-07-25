@@ -60,12 +60,45 @@ const main = async () => {
                 order :1,
                 title: "Nouns",
             },
+        ]);
+
+        await db.insert(schema.challenges).values([
+            {
+                id: 1,
+                lessonId :1, //Nouns
+                type : "SELECT",
+                order : 1,
+                question : 'Which one of these is "the man"?',
+            },
+            
+        ]);
+
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                id: 1,
+                challengeId : 1, //which one of these is the man
+                imageSrc : "/man.svg",
+                correct : true,
+                text: "el hombre",
+                audioSrc : "/es_man.mp3",
+            },
             {
                 id: 2,
-                unitId : 1, //unit1 (learn the basics)
-                order :2,
-                title: "Verbs",
-            }
+                challengeId : 1,
+                imageSrc : "/woman.svg",
+                correct : false,
+                text: "la mujer",
+                audioSrc : "/es_woman.mp3",
+            },
+            {
+                id: 3,
+                challengeId : 1,
+                imageSrc : "/robot.svg",
+                correct : false,
+                text: "el robot",
+                audioSrc : "/es_robot.mp3",
+            },
         ])
 
         console.log("Seeding database... done");
