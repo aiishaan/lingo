@@ -38,10 +38,19 @@ export const Quiz = ({
     const options = challenge?.challengeOptions ?? [];
 
 
+    const onNext = ()=> {
+        setActiveIndex((current)=> current+1);
+    }
+
+
     const onSelect = (id: number)=> {
         if(status!= "none") return;
 
         setSelectedOption(id);
+    }
+
+    const onContinue = ()=> {
+
     }
 
     const title = challenge.type === "ASSIST" ? "Select the correct meaning" : challenge.question;
@@ -75,7 +84,7 @@ export const Quiz = ({
                     </div>
                 </div>
             </div>
-            <Footer disabled={!selectedOption} status={status} onCheck={()=> {}}/>
+            <Footer disabled={!selectedOption} status={status} onCheck={onContinue}/>
         </>
     )
 }
