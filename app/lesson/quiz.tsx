@@ -34,6 +34,8 @@ export const Quiz = ({
 
     const router = useRouter();
 
+    const [finishAudio] = useAudio({src: "/finish.mp3", autoPlay: true});
+
     const [
         correctAudio,
         _c,
@@ -139,6 +141,7 @@ export const Quiz = ({
     if(true || !challenge){
         return(
             <>
+            {finishAudio}
             <Confetti width={width} height={height} recycle={false} numberOfPieces={500} tweenDuration={10000}/>
             <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
                 <Image src="/finish.svg" alt="finish" className="hidden lg:block" height={100} width={100}/>
