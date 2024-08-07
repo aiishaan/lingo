@@ -14,6 +14,7 @@ import Image from "next/image";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
 import Confetti from "react-confetti"
+import { useHeartsModal } from "@/store/use-hearts-modal";
 
 type Props = {
     initialPercentage: number;
@@ -29,6 +30,10 @@ type Props = {
 export const Quiz = ({
     initialPercentage, initialHearts, initialLessonId, initialLessonChallenges, userSubscription
 }: Props)=> {
+
+
+
+    const {open: openHeartsModal} = useHeartsModal();
 
     const {width, height} = useWindowSize();
 
@@ -104,7 +109,7 @@ export const Quiz = ({
             startTransition(()=> {
                 upsertChallengeProgress(challenge.id).then((response)=>{
                     if(response?.error==="hearts"){
-                        console.error("Missing hearts");
+                        openHeartsModal();
                         return;
                     }
 
@@ -121,7 +126,7 @@ export const Quiz = ({
             startTransition(()=> {
                 reduceHearts(challenge.id).then((response)=> {
                     if(response?.error ==="hearts"){
-                        console.error("Missing hearts");
+                        openHeartsModal();
                         return;
                     }
 
@@ -137,8 +142,7 @@ export const Quiz = ({
 
     }
 
-    //todo remove true
-    if(true || !challenge){
+    if(!challenge){
         return(
             <>
             {finishAudio}
