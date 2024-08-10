@@ -1,14 +1,15 @@
 "use server"
 
+import { POINTS_TO_REFILL } from "@/constants";
 import db from "@/db/drizzle";
-import { getCourseById, getUserProgress } from "@/db/queries";
+import { getCourseById, getUserProgress, getUserSubscription } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs/server"
 import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const POINTS_TO_REFILL = 10; //maybe todo
+
 
 export const upsertUserProgress = async (courseId : number) => {
     const {userId} = await auth();
@@ -24,10 +25,10 @@ export const upsertUserProgress = async (courseId : number) => {
     }
 
 
-    //Todo: enable when units and lessons are added
-    // if(!course.units.lenght || !course.units[0].lessons.length){
-    //     throw new Error("Course has no units or lessons")
-    // }
+
+    if(!course.units.length || !course.units[0].lessons.length){
+        throw new Error("Course has no units or lessons")
+    }
 
     const existingUserProgress = await  getUserProgress();
 
@@ -68,7 +69,7 @@ export const upsertUserProgress = async (courseId : number) => {
 
         const currentUserProgress = await getUserProgress();
 
-        //todo get user subs
+        const userSubscription = await getUserSubscription();
 
         const challenge = await db.query.challenges.findFirst({
             where: eq(challenges.id, challengeId)
@@ -98,7 +99,9 @@ export const upsertUserProgress = async (courseId : number) => {
             throw new Error("User progress not found");
         }
 
-        //todo handle subs
+        if(userSubscription?.isActive){
+            return {error : "Subscription"}
+        }
 
         if(currentUserProgress.hearts === 0){
             return {error :"hearts"};
