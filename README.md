@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Lingo
+
+Lingo is a language learning SaaS platform designed to make language acquisition engaging and interactive. Built with cutting-edge web technologies, Lingo offers AI-powered speech synthesis, secure user authentication, and a seamless payment system for premium features.
+
+## Features
+
+- **AI Voices for Speech Synthesis**: Enhance your learning experience with realistic AI-generated speech.
+- **Secure Authentication with Clerk**: Robust user authentication system to keep your data safe.
+- **Interactive Feedback**: Enjoy sound effects that provide real-time feedback during your learning sessions.
+- **Hearts System**: Engage with the platform through a gamified hearts system to track your progress.
+- **Pro Tier Subscription via Stripe**: Unlock advanced features with a Pro subscription, securely handled by Stripe.
+- **Mobile-Friendly Design**: Access Lingo on the go with a responsive design that works on all devices.
+
+## Technologies Used
+
+- **Next.js**: Framework for server-rendered React applications.
+- **React**: JavaScript library for building user interfaces.
+- **Drizzle ORM**: Simplified interaction with PostgreSQL for data storage and retrieval.
+- **PostgreSQL**: Powerful, open-source object-relational database system.
+- **Stripe**: Payment processing platform for managing subscriptions.
+- **Tailwind CSS**: Utility-first CSS framework for styling the platform.
+- **Clerk**: Authentication and user management service.
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy of Lingo up and running, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js
+- PostgreSQL
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/lingo.git
 
-## Learn More
+2. Install dependencies:
+    ```bash
+    cd lingo
+    npm install
 
-To learn more about Next.js, take a look at the following resources:
+3. Set up environment variables:
+    - Create a .env.local file in the root directory.
+    - Add your PostgreSQL connection string, Stripe API keys, Clerk API keys, and other necessary environment variables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the development server:
+    ```bash
+    npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
+    
+Lingo is deployed on Vercel. You can access the live version [here](https://lingo-orpin-gamma.vercel.app/)
 
-## Deploy on Vercel
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For any inquiries or support, please contact Aishan Irfan at [aishanirfan6@gmail.com].
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
